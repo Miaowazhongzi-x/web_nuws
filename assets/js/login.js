@@ -35,7 +35,7 @@ $(function () {
             username: $('.reg-box [name=username]').val(),
             password: $('.reg-box [name=password]').val()
         }
-        $.post('http://127.0.0.1:800/api/reguser', data, function (res) {
+        $.post('/api/reguser', data, function (res) {
             if (res.status !== 0) {
                 return layer.msg(res.message)
             }
@@ -49,11 +49,11 @@ $(function () {
         // 阻止默认提交行为
         e.preventDefault()
         $.ajax({
-            url: 'http://127.0.0.1:800/api/login',
+            url: '/api/login',
             type: 'post',
             data: $('#form_login').serialize(),
             success: function (res) {
-                if (res.status!==0) {
+                if (res.status!== 0) {
                     return layer.msg('登录失败！')
                 }
                 layer.msg('登录成功！')
